@@ -6,6 +6,7 @@ const port = 3000;
 require("dotenv").config(); // This is used to invoke the dotenv package
 const taskRouter = require("./routes/tasks.route");
 const notFound = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 
 // Middleware
 app.use(express.json()); // If we don't use this middleware, we won't have the data in req.body
@@ -15,6 +16,8 @@ app.use("/api/v1/tasks", taskRouter);
 
 // Custom 404 for route not found
 app.use(notFound);
+// Custom error handling from the server
+app.use(errorHandlerMiddleware);
 
 const startDB = async () => {
   try {
