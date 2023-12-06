@@ -5,10 +5,10 @@ const getAllTasks = async (req, res) => {
     const tasks = await Task.find({});
     res.status(200).json({
       success: true,
-      data: tasks,
+      tasks,
     });
   } catch (error) {
-    res.statuss(500).json({
+    res.status(500).json({
       success: false,
       msg: error,
     });
@@ -20,7 +20,7 @@ const createTask = async (req, res) => {
     const task = await Task.create(req.body);
     res.status(201).json({
       success: true,
-      data: task,
+      task,
     });
   } catch (error) {
     // console.log(error._message);
@@ -45,7 +45,7 @@ const singleTask = async (req, res) => {
     }
     res.status(200).json({
       success: true,
-      data: task,
+      task,
     });
   } catch (error) {
     // The mongoose error here would catch wrong structure of the id
@@ -98,7 +98,7 @@ const updateTask = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      data: task,
+      task,
       msg: "Task successfully updated",
     });
   } catch (error) {
