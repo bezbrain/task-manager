@@ -2,7 +2,8 @@ const connectDB = require("./db/connect");
 
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
 require("dotenv").config(); // This is used to invoke the dotenv package
 const taskRouter = require("./routes/tasks.route");
 const notFound = require("./middleware/not-found");
